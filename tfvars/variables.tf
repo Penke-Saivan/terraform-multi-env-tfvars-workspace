@@ -69,7 +69,10 @@ variable "protocol" {
   default = "-1"
 }
 
-variable "environemnt" {
+variable "environment" {
   type = string
   default = "dev-common"
 }
+# The root module does not declare a variable named "environment" but a value was found in file "dev/dev.tfvars". If you
+# │ meant to use this value, add a "variable" block to the configuration.
+

@@ -28,8 +28,8 @@ resource "aws_security_group" "allow_all_tf" {
 
   }
 
-  tags= {
-    Name = "${local.common_name}-tfvars-multi-env" 
-  }
+  tags = merge(local.common_tags, {
+    Name= "${local.common_name}-tfvars-multi-env"
+  })
 
 }
