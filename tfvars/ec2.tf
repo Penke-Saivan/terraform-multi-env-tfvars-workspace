@@ -1,16 +1,15 @@
 resource "aws_instance" "terraforma" {
-  ami           = "ami-09c813fb71547fc4f"
-  instance_type = "t3.micro"
+  ami           = var.ami_id
+  instance_type = var.instance_type
   vpc_security_group_ids = [aws_security_group.allow_all_tf.id]
 
-  tags = {
-    Name      = "HelloWorld" #Name of the instance and also present in tags section in AWS
-    Terraform = "true"
-  }
+  tags = merge(local.common_tags, {
+    Name= "${local.common_name}-tfvars-multi-env"
+  })
 }
 
 resource "aws_security_group" "allow_all_tf" {
-  name   = "allow-all-tf"
+  name   = "${local.common_name}-tfvars-multi-env"
 
 
   egress {
@@ -30,7 +29,7 @@ resource "aws_security_group" "allow_all_tf" {
   }
 
   tags= {
-    Name = "allow-all-terraform" 
+    Name = "${local.common_name}-tfvars-multi-env" 
   }
 
 }

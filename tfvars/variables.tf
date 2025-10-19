@@ -1,3 +1,12 @@
+variable "project"{
+    default = "roboshop"
+}
+# variable "common_tags" {
+#   default = {
+#     terraform=true
+#     project = "roboshop"
+#   }
+# }
 variable "ami_id" {
   type    = string
   default = "ami-09c813fb71547fc4f"
@@ -22,9 +31,9 @@ variable "ec2_tags" {
   }
 }
 
-variable "instance_typo" {
+variable "instance_type" {
   type    = string
-  default = "t3.micro"
+  default = "t3.medium"
 }
 
 variable "sg_name" {
@@ -61,5 +70,6 @@ variable "protocol" {
 }
 
 variable "environemnt" {
-  default = "dev"
+  type = string
+  default = "dev-common"
 }
